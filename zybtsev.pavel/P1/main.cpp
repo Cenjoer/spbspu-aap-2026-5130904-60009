@@ -8,7 +8,7 @@ int main()
     int range = 0;
     bool the_first = true;
     int b_num = 0;
-    int num;
+    int num = 0;
     while(std::cin >>num)
     {
       if(num == 0)
