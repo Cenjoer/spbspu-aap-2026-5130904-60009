@@ -34,7 +34,7 @@ int main()
           {
             max_range = range;
           }
-          range = 1;  
+          range = 1;
         }
         b_num = num;
       }
