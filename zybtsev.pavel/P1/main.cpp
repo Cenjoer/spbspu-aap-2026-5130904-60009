@@ -48,7 +48,6 @@ int main()
       max_range = range;
     }
     std::cout << max_range << std::endl;
-   
     return 0;
   }
   catch(const std::invalid_argument&)
