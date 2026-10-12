@@ -1,24 +1,16 @@
 #include <iostream>
 #include <stdexcept>
-#include <limits>
 
 int main()
 {
   try {
-    bool flag = true;
     int max_range = 0;
     int range = 0;
     bool the_first = true;
     int b_num = 0;
-
-    while(flag)
+    int num;
+    while(std::cin >>num)
     {
-      int num;
-      std::cin >> num;
-      if(num < std::numeric_limits<int>::lowest() || num > std::numeric_limits<int>::max())
-      {
-        throw;
-      }
       if(num == 0)
       {
         break;
