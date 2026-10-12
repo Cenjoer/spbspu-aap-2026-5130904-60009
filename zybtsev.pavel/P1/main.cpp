@@ -1,48 +1,71 @@
 #include <iostream>
+#include <stdexcept>
+#include <limits>
 
 int main()
 {
-  bool flag = true;
-  int max_range = 0;
-  int range = 0;
-  bool the_first = true;
-  while(flag)
-  {
+  try {
+    bool flag = true;
+    int max_range = 0;
+    int range = 0;
+    bool the_first = true;
     int b_num = 0;
-    int num;
-    std::cin >> num;
-    if(num == 0)
+
+    while(flag)
     {
-      break;
-    }
-    if(the_first)
-    {
-      b_num = num;
-      range = 1;
-      max_range = 1;
-      the_first = false;
-    }
-    else
-    {
-      if(num <= b_num)
+      int num;
+      std::cin >> num;
+      if(num < std::numeric_limits<int>::lowest() || num > std::numeric_limits<int>::max())
       {
-        ++range;
+        throw;
+      }
+      if(num == 0)
+      {
+        break;
+      }
+      if(the_first)
+      {
+        b_num = num;
+        range = 1;
+        max_range = 1;
+        the_first = false;
       }
       else
       {
-        if(max_range < range)
+        if(num <= b_num)
         {
-          max_range = range;
+          range = range + 1;
         }
-        range = 1;  
+        else
+        {
+          if(max_range < range)
+          {
+            max_range = range;
+          }
+          range = 1;  
+        }
+        b_num = num;
       }
-      b_num = num;
     }
-
+    if(std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
+    {
+      throw std::invalid_argument("invalid input");
+    }
+    if(range > max_range)
+    {
+      max_range = range;
+    }
+    std::cout << max_range << std::endl;
+   
+    return 0;
   }
-  if(range > max_range)
+  catch(const std::invalid_argument&)
   {
-    max_range = range;
+    return 1;
   }
-  std::cout << max_range << std::endl;
+  catch(...)
+  {
+    return 1;
+  }
 }
+
