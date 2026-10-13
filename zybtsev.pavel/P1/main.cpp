@@ -16,7 +16,6 @@ int main()
   try{
     int triples = 0;
     int range = 0;
-    bool the_first = true;
     int b_num = 0;
     int num = 0;
     int bb_num = 0;
@@ -39,10 +38,6 @@ int main()
     if( std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
     {
       throw std::invalid_argument("invalid input");
-    }
-    if(range > max_range)
-    {
-      max_range = range;
     }
     std::cout << range << triples << std::endl;
     return 0;
