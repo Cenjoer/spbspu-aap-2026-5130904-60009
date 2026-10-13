@@ -37,7 +37,7 @@ int main()
       bb_num = b_num;
       b_num = num;
     }
-    if( std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
+    if (std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
     {
       throw std::invalid_argument("invalid input");
     }
