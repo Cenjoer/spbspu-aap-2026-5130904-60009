@@ -1,9 +1,9 @@
 #include <iostream>
 #include <stdexcept>
 
-bool isPythagorian( int a, int b, int c )
+bool isPythagorian(int a, int b, int c)
 {
-  if ( a <= 0 || b <= 0 || c <= 0)
+  if (a <= 0 || b <= 0 || c <= 0)
   {
     return 0;
   }
@@ -34,16 +34,17 @@ int main()
       {
         triples++;
       }
+      bb_num = b_num;
       b_num = num;
     }
-    if(std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
+    if( std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
     {
       throw std::invalid_argument("invalid input");
     }
     std::cout << range << " " << triples << std::endl;
     return 0;
   }
-  catch (const std::invalid_argument&)
+  catch (const std::invalid_argument &)
   {
     return 1;
   }
