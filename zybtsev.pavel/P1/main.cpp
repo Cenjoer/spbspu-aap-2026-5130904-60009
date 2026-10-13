@@ -1,45 +1,42 @@
 #include <iostream>
 #include <stdexcept>
 
+bool is_pythagorian(int a,int b,int c)
+{
+  if(a <= 0 || b <= 0 || c <=0)
+  {
+    return 0;
+  }
+  long long lhs = a * a + b * b;
+  long long rhs = c * c;
+  return lhs == rhs;
+}
 int main()
 {
-  try {
-    int max_range = 0;
+  try{
+    int triples = 0;
     int range = 0;
     bool the_first = true;
     int b_num = 0;
     int num = 0;
-    while(std::cin >>num)
+    int bb_num = 0;
+    while ( std::cin >> num)
     {
-      if(num == 0)
+      if ( num == 0)
       {
         break;
       }
-      if(the_first)
+      if( (num > 0 &&  b_num < 0 )|| (num < 0 && b_num > 0) )
       {
-        b_num = num;
-        range = 1;
-        max_range = 1;
-        the_first = false;
+        range = range + 1;
       }
-      else
+      if( is_pythagorian(bb_num,b_num,num))
       {
-        if(num <= b_num)
-        {
-          range = range + 1;
-        }
-        else
-        {
-          if(max_range < range)
-          {
-            max_range = range;
-          }
-          range = 1;
-        }
-        b_num = num;
+        triples++;
       }
+      b_num = num;
     }
-    if(std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
+    if( std::cin.bad() || (std::cin.fail() && !std::cin.eof()))
     {
       throw std::invalid_argument("invalid input");
     }
@@ -47,14 +44,14 @@ int main()
     {
       max_range = range;
     }
-    std::cout << max_range << std::endl;
+    std::cout << range << triples << std::endl;
     return 0;
   }
-  catch(const std::invalid_argument&)
+  catch ( const std::invalid_argument& )
   {
     return 1;
   }
-  catch(...)
+  catch (...)
   {
     return 1;
   }
